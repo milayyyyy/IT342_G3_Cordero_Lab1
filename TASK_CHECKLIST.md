@@ -3,42 +3,45 @@
 ## DONE
 
 ### Backend Implementation
-- [x] Create User entity with JPA annotations - Commit: TBD
-- [x] Create UserRepository interface - Commit: TBD
-- [x] Implement DTOs (RegisterRequest, LoginRequest, AuthResponse, UserResponse) - Commit: TBD
-- [x] Implement AuthService with registration and login logic - Commit: TBD
-- [x] Implement UserService for profile retrieval - Commit: TBD
-- [x] Create JwtUtil for token generation and validation - Commit: TBD
-- [x] Create JwtAuthenticationFilter for token validation - Commit: TBD
-- [x] Create SecurityConfig for Spring Security configuration - Commit: TBD
-- [x] Create AuthController with /api/auth/register and /api/auth/login endpoints - Commit: TBD
-- [x] Create UserController with /api/user/me endpoint - Commit: TBD
-- [x] Add JWT dependencies to pom.xml - Commit: TBD
-- [x] Configure MySQL database connection in application.properties - Commit: TBD
-- [x] Configure Spring Security with JWT authentication - Commit: TBD
-- [x] Create BackendApplication main class - Commit: TBD
+- [x] Create User entity with JPA annotations - Commit: 3cfbf91
+- [x] Create UserRepository interface - Commit: 3cfbf91
+- [x] Implement DTOs (RegisterRequest, LoginRequest, AuthResponse, UserResponse) - Commit: 3cfbf91
+- [x] Implement AuthService with registration and login logic - Commit: 3cfbf91
+- [x] Implement UserService for profile retrieval - Commit: 3cfbf91
+- [x] Create JwtUtil for token generation and validation - Commit: 3cfbf91
+- [x] Create JwtAuthenticationFilter for token validation - Commit: 3cfbf91
+- [x] Create SecurityConfig for Spring Security configuration - Commit: 3cfbf91
+- [x] Create AuthController with /api/auth/register and /api/auth/login endpoints - Commit: 3cfbf91
+- [x] Create UserController with /api/user/me endpoint - Commit: 3cfbf91
+- [x] Add JWT dependencies to pom.xml - Commit: 3cfbf91
+- [x] Configure MySQL database connection in application.properties - Commit: 3cfbf91
+- [x] Configure Spring Security with JWT authentication - Commit: 3cfbf91
+- [x] Create BackendApplication main class - Commit: 3cfbf91
+- [x] Removed username field to align with ERD - Commit: 16feef8
 
 ### Frontend Implementation
-- [x] Create React project structure - Commit: TBD
-- [x] Create AuthContext for global authentication state - Commit: TBD
-- [x] Create apiClient with axios for API communication - Commit: TBD
-- [x] Implement Register page component - Commit: TBD
-- [x] Implement Login page component - Commit: TBD
-- [x] Implement Dashboard/Profile page component - Commit: TBD
-- [x] Create PrivateRoute component for route protection - Commit: TBD
-- [x] Create CSS styles for authentication pages - Commit: TBD
-- [x] Create CSS styles for dashboard page - Commit: TBD
-- [x] Setup React Router for navigation - Commit: TBD
-- [x] Implement logout functionality - Commit: TBD
-- [x] Configure CORS for frontend-backend communication - Commit: TBD
+- [x] Create React project structure - Commit: 16feef8
+- [x] Create AuthContext for global authentication state - Commit: 16feef8
+- [x] Create apiClient with axios for API communication - Commit: 16feef8
+- [x] Implement Register page component - Commit: 16feef8
+- [x] Implement Login page component - Commit: 16feef8
+- [x] Implement Dashboard/Profile page component - Commit: 16feef8
+- [x] Create PrivateRoute component for route protection - Commit: 16feef8
+- [x] Create CSS styles for authentication pages - Commit: 16feef8
+- [x] Create CSS styles for dashboard page - Commit: 16feef8
+- [x] Setup React Router for navigation - Commit: 16feef8
+- [x] Implement logout functionality - Commit: 16feef8
+- [x] Configure CORS for frontend-backend communication - Commit: 3cfbf91
+- [x] Fixed ESLint warnings in Dashboard and Register components - Commit: aac262d
 
-### Documentation
-- [x] Update main README.md with project description - Commit: TBD
-- [x] Update README.md with technologies used - Commit: TBD
-- [x] Update README.md with setup instructions - Commit: TBD
-- [x] Update README.md with API endpoints documentation - Commit: TBD
-- [x] Create individual README.md for web application - Commit: TBD
-- [x] Update TASK_CHECKLIST.md with progress - Commit: TBD
+### Documentation & Repository Setup
+- [x] Update main README.md with project description - Commit: 24dfef1
+- [x] Update README.md with technologies used - Commit: 24dfef1
+- [x] Update README.md with setup instructions - Commit: 24dfef1
+- [x] Update README.md with API endpoints documentation - Commit: 24dfef1
+- [x] Create individual README.md for web application - Commit: 16feef8
+- [x] Add project documentation structure - Commit: 4842a7d
+- [x] Add mobile app placeholder - Commit: aac262d
 
 ## IN-PROGRESS
 
@@ -108,13 +111,13 @@ None - All planned tasks for Session 1 are complete.
 
 ## Summary
 
-### Completed: 30+ Tasks
-- 14 Backend implementation tasks
-- 12 Frontend implementation tasks
-- 5+ Documentation tasks
+### Completed: 35+ Tasks
+- 15 Backend implementation tasks
+- 13 Frontend implementation tasks
+- 7+ Documentation and repository setup tasks
 
 ### Status: Session 1 Complete
-All required functionality for user registration and authentication has been implemented and is ready for testing.
+All required functionality for user registration and authentication has been implemented and deployed to GitHub. Code is aligned with the ERD requirements and ready for testing.
 
 ### Session 1 Deliverables Met:
 ✓ Backend REST API with JWT authentication
@@ -124,11 +127,20 @@ All required functionality for user registration and authentication has been imp
 ✓ BCrypt password encryption
 ✓ Comprehensive README with setup instructions
 ✓ API endpoint documentation
+✓ Git repository with individual commits
+✓ Code aligned with ERD (email-only login)
+✓ Fixed linting issues
+
+### GitHub Repository
+- Repository: https://github.com/milayyyyy/IT342_G3_Cordero_Lab1.git
+- Branch: main
+- Total Commits: 7
+- Latest Commit: aac262d (mobile folder placeholder)
 
 ### Session 2 Goals:
 - Implement mobile application using React Native/Flutter
-- Enhance frontend with additional features
-- Add backend improvements and advanced features
+- Enhance frontend with additional features (responsive design, dark mode)
+- Add backend improvements (email verification, password reset)
 - Complete documentation with ERD and UML diagrams
 
 ## Notes
@@ -138,3 +150,5 @@ All required functionality for user registration and authentication has been imp
 - JWT token expires after 24 hours
 - Database tables are auto-created on first run via JPA
 - CORS is configured for development on localhost:3000 and localhost:3001
+- Project structure includes placeholders for mobile and docs folders
+- ESLint warnings have been resolved
