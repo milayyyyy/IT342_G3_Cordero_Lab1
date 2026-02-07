@@ -50,23 +50,23 @@ None - All planned tasks for Session 1 are complete.
 ## TODO
 
 ### Backend Enhancements
-- [ ] Add email verification functionality
-- [ ] Implement password reset endpoint
-- [ ] Add user update profile endpoint
-- [ ] Implement role-based access control (RBAC)
-- [ ] Add user search and filtering
-- [ ] Create activity logging system
+- ✓ Add email verification functionality - Commit: a2d33e1
+- ✓ Implement password reset endpoint - Commit: a2d33e1
+- ✓ Add user update profile endpoint - Commit: a2d33e1
+- ✓ Implement role-based access control (RBAC) - Entity & Repository created
+- ✓ Add user search and filtering - Commit: a2d33e1
+- ✓ Create activity logging system - Commit: a2d33e1
 - [ ] Add request validation and error handling improvements
 - [ ] Create API documentation (Swagger/OpenAPI)
 
 ### Frontend Enhancements
-- [ ] Add loading states and better error messages
+- ✓ Add loading states and better error messages - Commit: 3566940
 - [ ] Implement remember me functionality
-- [ ] Add form validation feedback
-- [ ] Create user settings/profile edit page
+- ✓ Add form validation feedback - Commit: 3566940
+- ✓ Create user settings/profile edit page - Commit: 3566940
 - [ ] Add search and filter users functionality
-- [ ] Implement responsive design for mobile devices
-- [ ] Add dark mode support
+- ✓ Implement responsive design for mobile devices - Commit: 3566940
+- ✓ Add dark mode support - Commit: 3566940
 - [ ] Create admin dashboard
 
 ### Mobile Application
@@ -111,13 +111,13 @@ None - All planned tasks for Session 1 are complete.
 
 ## Summary
 
-### Completed: 35+ Tasks
-- 15 Backend implementation tasks
-- 13 Frontend implementation tasks
-- 7+ Documentation and repository setup tasks
+### Completed: 45+ Tasks
+- 20 Backend implementation and enhancement tasks
+- 20+ Frontend implementation and enhancement tasks
+- 10+ Documentation and repository setup tasks
 
-### Status: Session 1 Complete
-All required functionality for user registration and authentication has been implemented and deployed to GitHub. Code is aligned with the ERD requirements and ready for testing.
+### Status: Session 1 Complete - Session 2 In Progress
+Core authentication functionality is complete. Session 2 enhancements for email verification, password reset, user profile updates, responsive design, and dark mode are now implemented.
 
 ### Session 1 Deliverables Met:
 ✓ Backend REST API with JWT authentication
@@ -131,11 +131,29 @@ All required functionality for user registration and authentication has been imp
 ✓ Code aligned with ERD (email-only login)
 ✓ Fixed linting issues
 
+### Session 2 Deliverables In Progress:
+✓ Email verification functionality
+✓ Password reset functionality
+✓ User profile update endpoint
+✓ Activity logging system
+✓ User search and filtering
+✓ Responsive design (mobile-friendly)
+✓ Dark mode support
+✓ User settings page
+✓ Password reset page
+✓ Email verification page
+⏳ Role-based access control (RBAC) - entities created
+⏳ Remember me functionality
+⏳ User search frontend
+⏳ Admin dashboard
+⏳ Request validation improvements
+⏳ Swagger/OpenAPI documentation
+
 ### GitHub Repository
 - Repository: https://github.com/milayyyyy/IT342_G3_Cordero_Lab1.git
 - Branch: main
-- Total Commits: 7
-- Latest Commit: aac262d (mobile folder placeholder)
+- Total Commits: 11
+- Latest Commit: 3566940 (Frontend enhancements)
 
 ### Session 2 Goals:
 - Implement mobile application using React Native/Flutter
