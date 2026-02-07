@@ -1,11 +1,19 @@
 package coordero.it342.backend.controller;
 
 import coordero.it342.backend.dto.UserResponse;
+import coordero.it342.backend.dto.UpdateUserRequest;
+import coordero.it342.backend.entity.ActivityLog;
 import coordero.it342.backend.service.UserService;
+import coordero.it342.backend.service.ActivityLogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/user")
@@ -13,6 +21,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ActivityLogService activityLogService;
 
     @GetMapping("/me")
     public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {
@@ -22,6 +33,59 @@ public class UserController {
             return ResponseEntity.ok(user);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/me")
+    public ResponseEntity<?> updateProfile(Authentication authentication, @RequestBody UpdateUserRequest request) {
+        try {
+            String email = (String) authentication.getPrincipal();
+            UserResponse updatedUser = userService.updateUser(email, request);
+            return ResponseEntity.ok(updatedUser);
+        } catch (RuntimeException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchUsers(@RequestParam String query) {
+        try {
+            List<UserResponse> results = userService.searchUsers(query);
+            return ResponseEntity.ok(results);
+        } catch (RuntimeException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        }
+    }
+
+    @GetMapping("/activity")
+    public ResponseEntity<?> getActivity(Authentication authentication) {
+        try {
+            String email = (String) authentication.getPrincipal();
+            Long userId = userService.getUserIdByEmail(email);
+            List<ActivityLog> activity = activityLogService.getUserActivity(userId);
+            return ResponseEntity.ok(activity);
+        } catch (RuntimeException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        }
+    }
+
+    @GetMapping("/activity/recent")
+    public ResponseEntity<?> getRecentActivity(Authentication authentication, @RequestParam(defaultValue = "24") Long hoursBack) {
+        try {
+            String email = (String) authentication.getPrincipal();
+            Long userId = userService.getUserIdByEmail(email);
+            List<ActivityLog> activity = activityLogService.getRecentActivity(userId, hoursBack);
+            return ResponseEntity.ok(activity);
+        } catch (RuntimeException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
         }
     }
 }

@@ -34,6 +34,21 @@ public class User {
     @Column(nullable = false)
     private Boolean isActive = true;
 
+    @Column(nullable = false)
+    private Boolean emailVerified = false;
+
+    @Column(length = 255)
+    private String emailVerificationToken;
+
+    @Column(length = 255)
+    private String passwordResetToken;
+
+    @Column()
+    private Long passwordResetTokenExpiry;
+
+    @Column()
+    private Long lastLoginAt;
+
     @Column(nullable = false, updatable = false)
     private Long createdAt;
 

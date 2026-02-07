@@ -56,4 +56,46 @@ public class AuthController {
         response.put("message", "Logged out successfully");
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/verify-email")
+    public ResponseEntity<?> verifyEmail(@RequestParam String email, @RequestParam String token) {
+        try {
+            AuthResponse response = authService.verifyEmail(email, token);
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        }
+    }
+
+    @PostMapping("/request-password-reset")
+    public ResponseEntity<?> requestPasswordReset(@RequestParam String email) {
+        try {
+            authService.requestPasswordReset(email);
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Password reset email sent");
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        }
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> request) {
+        try {
+            String email = request.get("email");
+            String resetToken = request.get("resetToken");
+            String newPassword = request.get("newPassword");
+
+            AuthResponse response = authService.resetPassword(email, resetToken, newPassword);
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        }
+    }
 }

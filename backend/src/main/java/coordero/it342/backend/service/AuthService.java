@@ -7,6 +7,7 @@ import coordero.it342.backend.entity.User;
 import coordero.it342.backend.repository.UserRepository;
 import coordero.it342.backend.security.JwtUtil;
 import coordero.it342.backend.util.PasswordValidator;
+import coordero.it342.backend.util.EmailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,12 @@ public class AuthService {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private EmailUtil emailUtil;
+
+    @Autowired
+    private ActivityLogService activityLogService;
 
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -40,6 +47,9 @@ public class AuthService {
             throw new RuntimeException("Email already registered");
         }
 
+        // Generate email verification token
+        String verificationToken = emailUtil.generateVerificationToken();
+
         // Create new user
         User user = User.builder()
                 .email(request.getEmail())
@@ -47,11 +57,16 @@ public class AuthService {
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .isActive(true)
+                .emailVerified(false)
+                .emailVerificationToken(verificationToken)
                 .build();
 
         User savedUser = userRepository.save(user);
 
-        // Generate token
+        // Send verification email
+        emailUtil.sendVerificationEmail(savedUser.getEmail(), verificationToken);
+
+        // Generate token (but not verified yet)
         String token = jwtUtil.generateToken(savedUser.getEmail());
 
         return AuthResponse.builder()
@@ -84,6 +99,10 @@ public class AuthService {
             throw new RuntimeException("Invalid credentials");
         }
 
+        // Update last login time
+        user.setLastLoginAt(System.currentTimeMillis());
+        userRepository.save(user);
+
         // Generate token
         String token = jwtUtil.generateToken(user.getEmail());
 
@@ -95,6 +114,95 @@ public class AuthService {
                 .email(user.getEmail())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
+                .build();
+    }
+
+    public AuthResponse verifyEmail(String email, String token) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        if (userOptional.isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
+
+        User user = userOptional.get();
+
+        if (!token.equals(user.getEmailVerificationToken())) {
+            throw new RuntimeException("Invalid verification token");
+        }
+
+        user.setEmailVerified(true);
+        user.setEmailVerificationToken(null);
+        User savedUser = userRepository.save(user);
+
+        String newToken = jwtUtil.generateToken(savedUser.getEmail());
+
+        return AuthResponse.builder()
+                .id(savedUser.getId())
+                .token(newToken)
+                .tokenType("Bearer")
+                .expiresIn(86400L)
+                .email(savedUser.getEmail())
+                .firstName(savedUser.getFirstName())
+                .lastName(savedUser.getLastName())
+                .build();
+    }
+
+    public void requestPasswordReset(String email) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        if (userOptional.isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
+
+        User user = userOptional.get();
+        String resetToken = emailUtil.generateVerificationToken();
+        user.setPasswordResetToken(resetToken);
+        user.setPasswordResetTokenExpiry(System.currentTimeMillis() + (60 * 60 * 1000)); // 1 hour expiry
+        userRepository.save(user);
+
+        emailUtil.sendPasswordResetEmail(user.getEmail(), resetToken);
+    }
+
+    public AuthResponse resetPassword(String email, String resetToken, String newPassword) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        if (userOptional.isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
+
+        User user = userOptional.get();
+
+        // Validate token
+        if (!resetToken.equals(user.getPasswordResetToken())) {
+            throw new RuntimeException("Invalid reset token");
+        }
+
+        // Check token expiry
+        if (System.currentTimeMillis() > user.getPasswordResetTokenExpiry()) {
+            throw new RuntimeException("Reset token has expired");
+        }
+
+        // Validate new password
+        String passwordError = PasswordValidator.validatePassword(newPassword);
+        if (passwordError != null) {
+            throw new RuntimeException(passwordError);
+        }
+
+        user.setPasswordHash(passwordEncoder.encode(newPassword));
+        user.setPasswordResetToken(null);
+        user.setPasswordResetTokenExpiry(null);
+        User savedUser = userRepository.save(user);
+
+        String token = jwtUtil.generateToken(savedUser.getEmail());
+
+        return AuthResponse.builder()
+                .id(savedUser.getId())
+                .token(token)
+                .tokenType("Bearer")
+                .expiresIn(86400L)
+                .email(savedUser.getEmail())
+                .firstName(savedUser.getFirstName())
+                .lastName(savedUser.getLastName())
                 .build();
     }
 }
