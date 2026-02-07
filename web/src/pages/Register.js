@@ -24,7 +24,7 @@ const Register = () => {
       uppercase: /[A-Z]/.test(password),
       lowercase: /[a-z]/.test(password),
       digit: /\d/.test(password),
-      special: /[!@#$%^&*()_+\-=\[\]{};:,.<>?]/.test(password),
+      special: /[!@#$%^&*()_+\-=[\]{};:,.<>?]/.test(password),
     };
     setPasswordStrength(strength);
     return Object.values(strength).every(v => v);
