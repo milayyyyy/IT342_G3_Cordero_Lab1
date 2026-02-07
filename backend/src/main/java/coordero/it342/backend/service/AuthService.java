@@ -50,8 +50,12 @@ public class AuthService {
         // Generate email verification token
         String verificationToken = emailUtil.generateVerificationToken();
 
+        // Extract username from email (part before @)
+        String username = request.getEmail().substring(0, request.getEmail().indexOf('@'));
+
         // Create new user
         User user = User.builder()
+                .username(username)
                 .email(request.getEmail())
                 .passwordHash(passwordEncoder.encode(request.getPassword()))
                 .firstName(request.getFirstName())

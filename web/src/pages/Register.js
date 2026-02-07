@@ -30,6 +30,10 @@ const Register = () => {
     return Object.values(strength).every(v => v);
   };
 
+  const isPasswordValid = () => {
+    return formData.password && Object.values(passwordStrength).every(v => v);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -87,28 +91,30 @@ const Register = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="firstName">First Name</label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
+            <div className="form-group">
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
 
           <div className="form-group">
@@ -122,23 +128,9 @@ const Register = () => {
               onChange={handleChange}
               required
             />
-            {formData.password && (
-              <div className="password-strength">
-                <div className={`strength-item ${passwordStrength.length ? 'valid' : ''}`}>
-                  {passwordStrength.length ? '✓' : '○'} At least 8 characters
-                </div>
-                <div className={`strength-item ${passwordStrength.uppercase ? 'valid' : ''}`}>
-                  {passwordStrength.uppercase ? '✓' : '○'} One uppercase letter (A-Z)
-                </div>
-                <div className={`strength-item ${passwordStrength.lowercase ? 'valid' : ''}`}>
-                  {passwordStrength.lowercase ? '✓' : '○'} One lowercase letter (a-z)
-                </div>
-                <div className={`strength-item ${passwordStrength.digit ? 'valid' : ''}`}>
-                  {passwordStrength.digit ? '✓' : '○'} One digit (0-9)
-                </div>
-                <div className={`strength-item ${passwordStrength.special ? 'valid' : ''}`}>
-                  {passwordStrength.special ? '✓' : '○'} One special character (!@#$%^&*)
-                </div>
+            {formData.password && !isPasswordValid() && (
+              <div className="error-message">
+                Password must be at least 8 characters with uppercase, lowercase, digit, and special character
               </div>
             )}
           </div>

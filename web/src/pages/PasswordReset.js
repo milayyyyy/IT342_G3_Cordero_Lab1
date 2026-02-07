@@ -16,6 +16,7 @@ const PasswordReset = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [step, setStep] = useState(token ? 'reset' : 'request');
 
   const handleChange = (e) => {

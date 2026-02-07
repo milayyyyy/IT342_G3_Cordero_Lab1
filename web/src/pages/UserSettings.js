@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+// eslint-disable-next-line no-unused-vars
 import { authAPI, userAPI } from '../api/apiClient';
 import '../styles/dashboard.css';
 
