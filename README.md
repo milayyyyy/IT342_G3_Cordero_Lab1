@@ -264,13 +264,16 @@ Get current user profile (requires JWT token)
 
 ## Session 1 Deliverables
 
-- ✓ Backend API with authentication
+- ✓ Backend API with authentication (Email-based login per ERD)
 - ✓ React web application with login/register pages
 - ✓ Protected routes and JWT authentication
 - ✓ User profile page
 - ✓ MySQL database integration
 - ✓ BCrypt password encryption
 - ✓ Documentation and README
+- ✓ GitHub repository with version control
+- ✓ ESLint compliance in frontend code
+- ✓ Project structure with backend, frontend, mobile, and docs folders
 
 ## Notes
 
@@ -278,6 +281,8 @@ Get current user profile (requires JWT token)
 - Password must be sent as plain text during registration/login (HTTPS should be used in production)
 - All endpoints follow RESTful conventions
 - CORS is configured for localhost development
+- Email is the unique identifier for users (username field not included per ERD)
+- All file modifications are tracked in Git with meaningful commit messages
 
 ## Future Enhancements
 
@@ -297,3 +302,10 @@ Get current user profile (requires JWT token)
 ## Due Date
 
 Session 1: February 7, 2026 at 2:00 PM
+
+## Repository Information
+
+- **GitHub Repository:** https://github.com/milayyyyy/IT342_G3_Cordero_Lab1.git
+- **Commits:** 7 individual commits with clear messages
+- **Last Updated:** February 7, 2026
+- **Status:** Ready for deployment and testing
