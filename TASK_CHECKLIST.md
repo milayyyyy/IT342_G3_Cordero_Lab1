@@ -3,45 +3,45 @@
 ## DONE
 
 ### Backend Implementation
-- [x] Create User entity with JPA annotations - Commit: 3cfbf91
-- [x] Create UserRepository interface - Commit: 3cfbf91
-- [x] Implement DTOs (RegisterRequest, LoginRequest, AuthResponse, UserResponse) - Commit: 3cfbf91
-- [x] Implement AuthService with registration and login logic - Commit: 3cfbf91
-- [x] Implement UserService for profile retrieval - Commit: 3cfbf91
-- [x] Create JwtUtil for token generation and validation - Commit: 3cfbf91
-- [x] Create JwtAuthenticationFilter for token validation - Commit: 3cfbf91
-- [x] Create SecurityConfig for Spring Security configuration - Commit: 3cfbf91
-- [x] Create AuthController with /api/auth/register and /api/auth/login endpoints - Commit: 3cfbf91
-- [x] Create UserController with /api/user/me endpoint - Commit: 3cfbf91
-- [x] Add JWT dependencies to pom.xml - Commit: 3cfbf91
-- [x] Configure MySQL database connection in application.properties - Commit: 3cfbf91
-- [x] Configure Spring Security with JWT authentication - Commit: 3cfbf91
-- [x] Create BackendApplication main class - Commit: 3cfbf91
-- [x] Removed username field to align with ERD - Commit: 16feef8
+- ✓ Create User entity with JPA annotations - Commit: 3cfbf91
+- ✓ Create UserRepository interface - Commit: 3cfbf91
+- ✓ Implement DTOs (RegisterRequest, LoginRequest, AuthResponse, UserResponse) - Commit: 3cfbf91
+- ✓ Implement AuthService with registration and login logic - Commit: 3cfbf91
+- ✓ Implement UserService for profile retrieval - Commit: 3cfbf91
+- ✓ Create JwtUtil for token generation and validation - Commit: 3cfbf91
+- ✓ Create JwtAuthenticationFilter for token validation - Commit: 3cfbf91
+- ✓ Create SecurityConfig for Spring Security configuration - Commit: 3cfbf91
+- ✓ Create AuthController with /api/auth/register and /api/auth/login endpoints - Commit: 3cfbf91
+- ✓ Create UserController with /api/user/me endpoint - Commit: 3cfbf91
+- ✓ Add JWT dependencies to pom.xml - Commit: 3cfbf91
+- ✓ Configure MySQL database connection in application.properties - Commit: 3cfbf91
+- ✓ Configure Spring Security with JWT authentication - Commit: 3cfbf91
+- ✓ Create BackendApplication main class - Commit: 3cfbf91
+- ✓ Removed username field to align with ERD - Commit: 16feef8
 
 ### Frontend Implementation
-- [x] Create React project structure - Commit: 16feef8
-- [x] Create AuthContext for global authentication state - Commit: 16feef8
-- [x] Create apiClient with axios for API communication - Commit: 16feef8
-- [x] Implement Register page component - Commit: 16feef8
-- [x] Implement Login page component - Commit: 16feef8
-- [x] Implement Dashboard/Profile page component - Commit: 16feef8
-- [x] Create PrivateRoute component for route protection - Commit: 16feef8
-- [x] Create CSS styles for authentication pages - Commit: 16feef8
-- [x] Create CSS styles for dashboard page - Commit: 16feef8
-- [x] Setup React Router for navigation - Commit: 16feef8
-- [x] Implement logout functionality - Commit: 16feef8
-- [x] Configure CORS for frontend-backend communication - Commit: 3cfbf91
-- [x] Fixed ESLint warnings in Dashboard and Register components - Commit: aac262d
+- ✓ Create React project structure - Commit: 16feef8
+- ✓ Create AuthContext for global authentication state - Commit: 16feef8
+- ✓ Create apiClient with axios for API communication - Commit: 16feef8
+- ✓ Implement Register page component - Commit: 16feef8
+- ✓ Implement Login page component - Commit: 16feef8
+- ✓ Implement Dashboard/Profile page component - Commit: 16feef8
+- ✓ Create PrivateRoute component for route protection - Commit: 16feef8
+- ✓ Create CSS styles for authentication pages - Commit: 16feef8
+- ✓ Create CSS styles for dashboard page - Commit: 16feef8
+- ✓ Setup React Router for navigation - Commit: 16feef8
+- ✓ Implement logout functionality - Commit: 16feef8
+- ✓ Configure CORS for frontend-backend communication - Commit: 3cfbf91
+- ✓ Fixed ESLint warnings in Dashboard and Register components - Commit: aac262d
 
 ### Documentation & Repository Setup
-- [x] Update main README.md with project description - Commit: 24dfef1
-- [x] Update README.md with technologies used - Commit: 24dfef1
-- [x] Update README.md with setup instructions - Commit: 24dfef1
-- [x] Update README.md with API endpoints documentation - Commit: 24dfef1
-- [x] Create individual README.md for web application - Commit: 16feef8
-- [x] Add project documentation structure - Commit: 4842a7d
-- [x] Add mobile app placeholder - Commit: aac262d
+- ✓ Update main README.md with project description - Commit: 24dfef1
+- ✓ Update README.md with technologies used - Commit: 24dfef1
+- ✓ Update README.md with setup instructions - Commit: 24dfef1
+- ✓ Update README.md with API endpoints documentation - Commit: 24dfef1
+- ✓ Create individual README.md for web application - Commit: 16feef8
+- ✓ Add project documentation structure - Commit: 4842a7d
+- ✓ Add mobile app placeholder - Commit: aac262d
 
 ## IN-PROGRESS
 
