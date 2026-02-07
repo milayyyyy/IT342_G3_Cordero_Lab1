@@ -10,6 +10,7 @@ const Dashboard = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === 'true');
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -27,6 +28,15 @@ const Dashboard = () => {
     fetchUserData();
   }, []);
 
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+
   const handleLogout = async () => {
     try {
       await authAPI.logout();
@@ -35,6 +45,10 @@ const Dashboard = () => {
     }
     logout();
     navigate('/login');
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
   };
 
   const formatDate = (timestamp) => {
@@ -55,9 +69,17 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <nav className="navbar">
         <h1>Dashboard</h1>
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout
-        </button>
+        <div className="navbar-actions">
+          <button className="theme-toggle" onClick={toggleDarkMode}>
+            {darkMode ? '☀️ Light' : '🌙 Dark'}
+          </button>
+          <button className="settings-btn" onClick={() => navigate('/settings')}>
+            ⚙️ Settings
+          </button>
+          <button className="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       </nav>
 
       <div className="dashboard-card">
