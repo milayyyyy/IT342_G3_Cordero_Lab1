@@ -18,8 +18,8 @@
 - ✓ Configure Spring Security with JWT authentication - Commit: 3cfbf91
 - ✓ Create BackendApplication main class - Commit: 3cfbf91
 - ✓ Removed username field to align with ERD - Commit: 16feef8
-- ✓ Implement logout endpoint with JWT blacklist - Commit: pending
-- ✓ Add global exception handler and validation annotations - Commit: pending
+- ✓ Implement logout endpoint with JWT blacklist - Commit: 370b134
+- ✓ Add global exception handler and validation annotations - Commit: 370b134
 
 ### Frontend Implementation
 - ✓ Create React project structure - Commit: 16feef8
@@ -44,8 +44,8 @@
 - ✓ Create individual README.md for web application - Commit: 16feef8
 - ✓ Add project documentation structure - Commit: 4842a7d
 - ✓ Add mobile app placeholder - Commit: aac262d
-- ✓ Update FRS content in docs (to export PDF) - Commit: pending
-- ✓ Add mobile app (Android Kotlin) initial implementation - Commit: pending
+- ✓ Update FRS content in docs (to export PDF) - Commit: 370b134
+- ✓ Add mobile app (Android Kotlin) initial implementation - Commit: 370b134
 
 ## IN-PROGRESS
 
@@ -74,11 +74,11 @@ None - All planned tasks for Session 1 are complete.
 - [ ] Create admin dashboard
 
 ### Mobile Application
-- ✓ Setup Android Kotlin project under /mobile - Commit: pending
-- ✓ Create mobile registration page (Kotlin/Retrofit) - Commit: pending
-- ✓ Create mobile login page (Kotlin/Retrofit) - Commit: pending
-- ✓ Create mobile profile page (protected) - Commit: pending
-- ✓ Implement logout functionality (token blacklist) - Commit: pending
+- ✓ Setup Android Kotlin project under /mobile - Commit: 370b134
+- ✓ Create mobile registration page (Kotlin/Retrofit) - Commit: 370b134
+- ✓ Create mobile login page (Kotlin/Retrofit) - Commit: 370b134
+- ✓ Create mobile profile page (protected) - Commit: 370b134
+- ✓ Implement logout functionality (token blacklist) - Commit: 370b134
 - [ ] Create signed Android APK build
 
 ### Database
