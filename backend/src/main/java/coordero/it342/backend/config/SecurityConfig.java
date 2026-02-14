@@ -2,6 +2,7 @@ package coordero.it342.backend.config;
 
 import coordero.it342.backend.security.JwtAuthenticationFilter;
 import coordero.it342.backend.security.JwtUtil;
+import coordero.it342.backend.security.TokenBlacklist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,14 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    @Autowired
+    private TokenBlacklist tokenBlacklist;
+
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter(jwtUtil, tokenBlacklist);
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -42,7 +51,7 @@ public class SecurityConfig {
                 .antMatchers("/api/user/me").authenticated()
                 .anyRequest().permitAll()
                 .and()
-                .addFilterBefore(new JwtAuthenticationFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

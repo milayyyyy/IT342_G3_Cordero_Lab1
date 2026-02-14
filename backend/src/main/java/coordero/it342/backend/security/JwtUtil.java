@@ -45,6 +45,10 @@ public class JwtUtil {
         }
     }
 
+    public long getExpirationMillis(String token) {
+        return getAllClaimsFromToken(token).getExpiration().getTime();
+    }
+
     private Claims getAllClaimsFromToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
@@ -53,4 +57,3 @@ public class JwtUtil {
                 .getBody();
     }
 }
-

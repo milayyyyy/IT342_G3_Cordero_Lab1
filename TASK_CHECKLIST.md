@@ -18,6 +18,8 @@
 - ✓ Configure Spring Security with JWT authentication - Commit: 3cfbf91
 - ✓ Create BackendApplication main class - Commit: 3cfbf91
 - ✓ Removed username field to align with ERD - Commit: 16feef8
+- ✓ Implement logout endpoint with JWT blacklist - Commit: pending
+- ✓ Add global exception handler and validation annotations - Commit: pending
 
 ### Frontend Implementation
 - ✓ Create React project structure - Commit: 16feef8
@@ -42,6 +44,8 @@
 - ✓ Create individual README.md for web application - Commit: 16feef8
 - ✓ Add project documentation structure - Commit: 4842a7d
 - ✓ Add mobile app placeholder - Commit: aac262d
+- ✓ Update FRS content in docs (to export PDF) - Commit: pending
+- ✓ Add mobile app (Android Kotlin) initial implementation - Commit: pending
 
 ## IN-PROGRESS
 
@@ -70,12 +74,12 @@ None - All planned tasks for Session 1 are complete.
 - [ ] Create admin dashboard
 
 ### Mobile Application
-- [ ] Setup React Native/Flutter project
-- [ ] Create mobile registration page
-- [ ] Create mobile login page
-- [ ] Create mobile profile page
-- [ ] Implement mobile-specific authentication flow
-- [ ] Create native app builds for iOS and Android
+- ✓ Setup Android Kotlin project under /mobile - Commit: pending
+- ✓ Create mobile registration page (Kotlin/Retrofit) - Commit: pending
+- ✓ Create mobile login page (Kotlin/Retrofit) - Commit: pending
+- ✓ Create mobile profile page (protected) - Commit: pending
+- ✓ Implement logout functionality (token blacklist) - Commit: pending
+- [ ] Create signed Android APK build
 
 ### Database
 - [ ] Create backup and restore scripts
@@ -107,7 +111,7 @@ None - All planned tasks for Session 1 are complete.
 - [ ] Create deployment guide
 - [ ] Create troubleshooting guide
 - [ ] Create video tutorials
-- [ ] Take screenshots of UI for documentation
+- [ ] Take screenshots of Web and Mobile UI for documentation
 
 ## Summary
 

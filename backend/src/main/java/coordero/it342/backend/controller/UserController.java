@@ -11,9 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
+import coordero.it342.backend.dto.ErrorResponse;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/user")
@@ -32,7 +31,8 @@ public class UserController {
             UserResponse user = userService.getUserByEmail(email);
             return ResponseEntity.ok(user);
         } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(null);
         }
     }
 
@@ -43,9 +43,8 @@ public class UserController {
             UserResponse updatedUser = userService.updateUser(email, request);
             return ResponseEntity.ok(updatedUser);
         } catch (RuntimeException e) {
-            Map<String, String> error = new HashMap<>();
-            error.put("message", e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ErrorResponse(e.getMessage(), System.currentTimeMillis()));
         }
     }
 
@@ -55,9 +54,8 @@ public class UserController {
             List<UserResponse> results = userService.searchUsers(query);
             return ResponseEntity.ok(results);
         } catch (RuntimeException e) {
-            Map<String, String> error = new HashMap<>();
-            error.put("message", e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ErrorResponse(e.getMessage(), System.currentTimeMillis()));
         }
     }
 
@@ -69,9 +67,8 @@ public class UserController {
             List<ActivityLog> activity = activityLogService.getUserActivity(userId);
             return ResponseEntity.ok(activity);
         } catch (RuntimeException e) {
-            Map<String, String> error = new HashMap<>();
-            error.put("message", e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ErrorResponse(e.getMessage(), System.currentTimeMillis()));
         }
     }
 
@@ -83,9 +80,8 @@ public class UserController {
             List<ActivityLog> activity = activityLogService.getRecentActivity(userId, hoursBack);
             return ResponseEntity.ok(activity);
         } catch (RuntimeException e) {
-            Map<String, String> error = new HashMap<>();
-            error.put("message", e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ErrorResponse(e.getMessage(), System.currentTimeMillis()));
         }
     }
 }
